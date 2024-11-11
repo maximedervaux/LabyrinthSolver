@@ -1,0 +1,7 @@
+# ninja log v6
+26	51	1731322264268033836	LabyrinthSolver	99e31c80dbb61a49
+1	26	1731322264242519472	CMakeFiles/LabyrinthSolver.dir/main.c.o	7f4fe06300bcabd0
+5	54	1731331447843460018	build.ninja	19f7b7b9d411f6da
+0	161	1731331447849436854	CMakeFiles/LabyrinthSolver.dir/main.c.o	7f4fe06300bcabd0
+0	161	1731331447849827310	CMakeFiles/LabyrinthSolver.dir/maze.c.o	fcdf64e585e96b80
+161	270	1731331448010941427	LabyrinthSolver	db36ebcd4d6f2349
