@@ -4,12 +4,6 @@
 
 #ifndef MAZE_H
 #define MAZE_H
-typedef struct {
-    int top ;
-    int bottom ;
-    int left ;
-    int right ;
-}Directions;
 
 typedef struct {
     int x;
@@ -18,7 +12,8 @@ typedef struct {
 
 typedef struct {
     int visite;
-    Directions walls;
+    int wallBottom;
+    int wallRight;
     Coordinates coordonate;
 }Cellule;
 

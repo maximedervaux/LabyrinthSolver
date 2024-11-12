@@ -9,6 +9,14 @@
 #include <time.h>
 
 
+typedef enum {
+    UP = 0,
+    RIGHT = 1,
+    DOWN = 2,
+    LEFT = 3
+} Direction;
+
+
 Maze* createMaze(int width, int height) {
     Maze* maze = malloc(sizeof(Maze));
     maze->width = width;
@@ -36,8 +44,8 @@ Maze* createMaze(int width, int height) {
     maze->start.y = 0;
 
 
-    maze->grid[maze->start.y][maze->start.x].visite = 0;
-    maze->grid[maze->end.y][maze->end.x].visite = 0;
+    maze->grid[maze->start.y][maze->start.x].visite = 1;
+    maze->grid[maze->end.y][maze->end.x].visite = 1;
     return maze;
 
 }
@@ -73,12 +81,32 @@ void freeMaze(Maze *maze) {
 }
 
 void backTracking(Maze* maze, Cellule* startCellule) {
-    int *mastack = malloc(sizeof(int) * maze->width * maze->height);
+    Cellule **mastack = malloc(sizeof(Cellule*) * maze->width * maze->height);
+
+    int stacktop = 0;
+    mastack[stacktop++] = startCellule;
 
 
 }
 
-void randDirection(Cellule* cellule) {
-    srand(time(NULL));
 
+Direction randDirection(Cellule* cellule) {
+    srand(time(NULL));
+    int directions[4] = {UP, DOWN, RIGHT, LEFT};
+    int validDirections[4];  // CA VA PERMETTRE DE GERER LES BORDS DU MAZE
+    int count = 0;
+
+    if (cellule->coordonate.y > 0)
+        validDirections[count++] = UP;
+    if (cellule->coordonate.x < maze->width - 1)
+        validDirections[count++] = RIGHT;
+    if (cellule->coordonate.y < maze->height - 1)
+        validDirections[count++] = DOWN;
+    if (cellule->coordonate.x > 0)
+        validDirections[count++] = LEFT;
+
+    if (count > 0) {
+        return validDirections[rand() % count];
+    }
+    return -1;
 }
