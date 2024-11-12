@@ -5,3 +5,17 @@
 0	161	1731331447849436854	CMakeFiles/LabyrinthSolver.dir/main.c.o	7f4fe06300bcabd0
 0	161	1731331447849827310	CMakeFiles/LabyrinthSolver.dir/maze.c.o	fcdf64e585e96b80
 161	270	1731331448010941427	LabyrinthSolver	db36ebcd4d6f2349
+0	25	1731332671214859070	CMakeFiles/LabyrinthSolver.dir/main.c.o	7f4fe06300bcabd0
+1	28	1731332671215042820	CMakeFiles/LabyrinthSolver.dir/maze.c.o	fcdf64e585e96b80
+28	52	1731332671242124474	LabyrinthSolver	db36ebcd4d6f2349
+1	25	1731332892743334579	CMakeFiles/LabyrinthSolver.dir/maze.c.o	fcdf64e585e96b80
+25	47	1731332892767137067	LabyrinthSolver	db36ebcd4d6f2349
+1	27	1731332900025324386	CMakeFiles/LabyrinthSolver.dir/maze.c.o	fcdf64e585e96b80
+27	49	1731332900051379165	LabyrinthSolver	db36ebcd4d6f2349
+0	24	1731332917323739191	CMakeFiles/LabyrinthSolver.dir/maze.c.o	fcdf64e585e96b80
+24	46	1731332917347489596	LabyrinthSolver	db36ebcd4d6f2349
+4	136	1731402888329766575	CMakeFiles/LabyrinthSolver.dir/main.c.o	7f4fe06300bcabd0
+5	136	1731402888330912627	CMakeFiles/LabyrinthSolver.dir/maze.c.o	fcdf64e585e96b80
+136	221	1731402888461548458	LabyrinthSolver	db36ebcd4d6f2349
+1	35	1731403137776442457	CMakeFiles/LabyrinthSolver.dir/maze.c.o	fcdf64e585e96b80
+35	59	1731403137810654501	LabyrinthSolver	db36ebcd4d6f2349
