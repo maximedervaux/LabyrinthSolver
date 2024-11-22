@@ -29,6 +29,7 @@ typedef struct {
 Maze* createMaze(int width, int height);
 void printMaze(Maze* maze);
 void freeMaze(Maze* maze);
+int backTracking(Maze* maze, Cellule* cellule);
 
 
 
