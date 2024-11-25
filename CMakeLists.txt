@@ -6,4 +6,6 @@ set(CMAKE_C_STANDARD 11)
 add_executable(LabyrinthSolver main.c
         include/maze.h
         maze.c
+        resolver.c
+        include/resolver.h
 )

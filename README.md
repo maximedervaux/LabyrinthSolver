@@ -1,6 +1,6 @@
 # LabyrinthSolver
 
-Ce projet implémente un générateur et un résolveur de labyrinthes en C. L’objectif est de générer un labyrinthe parfait et de le résoudre. Dans cette première étape, nous nous concentrons sur la génération du labyrinthe.
+Ce projet implémente un générateur et un résolveur de labyrinthes en C. L’objectif est de générer un labyrinthe parfait et de le résoudre. 
 
 ## Table des matières
 
@@ -50,3 +50,8 @@ Après avoir étudié ces deux algorithmes, j'ai décidé de commencer par **l'a
 Si le temps le permet et que la génération fonctionne correctement, je tenterai d'implémenter l'algorithme de **Kruskal** pour comparer les performances et les résultats des deux méthodes.
 
 ---
+
+## Resolution du labyrinthe
+
+### Les algorithmes de resolution
+

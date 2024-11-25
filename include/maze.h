@@ -11,7 +11,7 @@ typedef struct {
 }Coordinates;
 
 typedef struct {
-    int visite;
+    int visite;            // 0 = non visité, 1 = visité, 2 = fait partie du resultat , -1 = Cul de sac
     int wallBottom;
     int wallRight;
     Coordinates coordonate;
@@ -25,11 +25,19 @@ typedef struct {
     Cellule **grid;
 } Maze;
 
+typedef enum {
+    UP = 0,
+    RIGHT = 1,
+    DOWN = 2,
+    LEFT = 3
+} Direction;
+
 
 Maze* createMaze(int width, int height);
 void printMaze(Maze* maze);
 void freeMaze(Maze* maze);
-int backTracking(Maze* maze, Cellule* cellule);
+int backTrackingGenerator(Maze* maze, Cellule* cellule);
+void resetVisite(Maze* maze);
 
 
 

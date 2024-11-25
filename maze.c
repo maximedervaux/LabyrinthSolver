@@ -9,13 +9,6 @@
 #include <stdlib.h>
 
 
-typedef enum {
-    UP = 0,
-    RIGHT = 1,
-    DOWN = 2,
-    LEFT = 3
-} Direction;
-
 
 Maze* createMaze(int width, int height) {
     Maze* maze = malloc(sizeof(Maze));
@@ -53,22 +46,20 @@ void printMaze(Maze* maze) {
         printf("+---");
     }
     printf("+\n");
+
     for (int i = 0; i < maze->height; i++) {
         printf("|");
         for (int j = 0; j < maze->width; j++) {
             if (maze->start.y == i && maze->start.x == j) {
-                printf(" E "); // 'E' pour l'entrée
+                printf(" E ");
             } else if (maze->end.y == i && maze->end.x == j) {
-                printf(" S "); // 'S' pour la sortie
+                printf(" S ");
+            } else if (maze->grid[i][j].visite == 2) {
+                printf(" * ");
             } else {
                 printf("   ");
-                //printf(" %c ", maze->grid[i][j].visite ? 'X' : ' ');
             }
-            if (maze->grid[i][j].wallRight) {
-                printf("|");
-            } else {
-                printf(" ");
-            }
+            printf(maze->grid[i][j].wallRight ? "|" : " ");
         }
         printf("\n");
 
@@ -88,12 +79,11 @@ void freeMaze(Maze *maze) {
     free(maze);
 }
 
-Direction randDirection(Cellule* cellule, Maze* maze) {
+Direction randDirectionResolver(Cellule* cellule, Maze* maze) {
     int directions[4] = {UP, RIGHT, DOWN, LEFT};
     int validDirections[4];
     int count = 0;
 
-    // Vérifie chaque direction pour voir si elle est valide
     if (cellule->coordonate.y > 0 && !maze->grid[cellule->coordonate.y - 1][cellule->coordonate.x].visite)
         validDirections[count++] = UP;
     if (cellule->coordonate.x < maze->width - 1 && !maze->grid[cellule->coordonate.y][cellule->coordonate.x + 1].visite)
@@ -109,7 +99,7 @@ Direction randDirection(Cellule* cellule, Maze* maze) {
     return -1;
 }
 
-int backTracking(Maze* maze, Cellule* startCellule) {
+int backTrackingGenerator(Maze* maze, Cellule* startCellule) {
     Cellule** mastack = malloc(sizeof(Cellule*) * maze->width * maze->height);
     int stacktop = 0;
 
@@ -118,7 +108,7 @@ int backTracking(Maze* maze, Cellule* startCellule) {
 
     while (stacktop > 0) {
         Cellule* cellule = mastack[stacktop - 1];
-        Direction direction = randDirection(cellule, maze);
+        Direction direction = randDirectionResolver(cellule, maze);
 
         if (direction != -1) {
             Cellule* nextCellule = NULL;
@@ -126,19 +116,19 @@ int backTracking(Maze* maze, Cellule* startCellule) {
             switch (direction) {
                 case UP:
                     nextCellule = &maze->grid[cellule->coordonate.y - 1][cellule->coordonate.x];
-                nextCellule->wallBottom = 0; // Supprime le mur bas de la cellule suivante
+                    nextCellule->wallBottom = 0;
                 break;
                 case DOWN:
                     nextCellule = &maze->grid[cellule->coordonate.y + 1][cellule->coordonate.x];
-                cellule->wallBottom = 0; // Supprime le mur bas de la cellule actuelle
+                    cellule->wallBottom = 0;
                 break;
                 case RIGHT:
                     nextCellule = &maze->grid[cellule->coordonate.y][cellule->coordonate.x + 1];
-                cellule->wallRight = 0; // Supprime le mur droit de la cellule actuelle
+                    cellule->wallRight = 0;
                 break;
                 case LEFT:
                     nextCellule = &maze->grid[cellule->coordonate.y][cellule->coordonate.x - 1];
-                nextCellule->wallRight = 0; // Supprime le mur droit de la cellule suivante
+                    nextCellule->wallRight = 0;
                 break;
             }
 
@@ -148,15 +138,23 @@ int backTracking(Maze* maze, Cellule* startCellule) {
                 nextCellule->visite = 1;
                 mastack[stacktop++] = nextCellule;
 
-                printMaze(maze);
-                usleep(1000000);
+
+                //printMaze(maze);
+                // usleep(500000);
             }
         } else {
-            // Retourne en arrière si aucune direction valide
             stacktop--;
         }
     }
 
     free(mastack);
     return 0;
+}
+
+void resetVisite(Maze* maze) {
+    for (int i = 0; i < maze->height; i++) {
+        for (int j = 0; j < maze->width; j++) {
+            maze->grid[i][j].visite = 0;
+        }
+    }
 }
