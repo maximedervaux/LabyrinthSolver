@@ -2,8 +2,8 @@
 #include <time.h>
 #include <unistd.h>
 
-#include "include/maze.h"
-#include "include/resolver.h"
+#include "../include/maze.h"
+#include "../include/resolver.h"
 #include "stdlib.h"
 
 

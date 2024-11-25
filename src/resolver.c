@@ -4,9 +4,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "include/resolver.h"
+#include "../include/resolver.h"
 #include <unistd.h>
-#include "include/maze.h"
+#include "../include/maze.h"
 
 
 Direction randDirectionForSolver(Cellule* cellule, Maze* maze) {

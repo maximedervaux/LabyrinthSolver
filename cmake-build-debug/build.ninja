@@ -49,23 +49,23 @@ cmake_ninja_workdir = /Users/maximedervaux/dev/perso/LabyrinthSolver/cmake-build
 
 build cmake_object_order_depends_target_LabyrinthSolver: phony || .
 
-build CMakeFiles/LabyrinthSolver.dir/main.c.o: C_COMPILER__LabyrinthSolver_unscanned_Debug /Users/maximedervaux/dev/perso/LabyrinthSolver/main.c || cmake_object_order_depends_target_LabyrinthSolver
-  DEP_FILE = CMakeFiles/LabyrinthSolver.dir/main.c.o.d
+build CMakeFiles/LabyrinthSolver.dir/src/main.c.o: C_COMPILER__LabyrinthSolver_unscanned_Debug /Users/maximedervaux/dev/perso/LabyrinthSolver/src/main.c || cmake_object_order_depends_target_LabyrinthSolver
+  DEP_FILE = CMakeFiles/LabyrinthSolver.dir/src/main.c.o.d
   FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/LabyrinthSolver.dir
-  OBJECT_FILE_DIR = CMakeFiles/LabyrinthSolver.dir
+  OBJECT_FILE_DIR = CMakeFiles/LabyrinthSolver.dir/src
 
-build CMakeFiles/LabyrinthSolver.dir/maze.c.o: C_COMPILER__LabyrinthSolver_unscanned_Debug /Users/maximedervaux/dev/perso/LabyrinthSolver/maze.c || cmake_object_order_depends_target_LabyrinthSolver
-  DEP_FILE = CMakeFiles/LabyrinthSolver.dir/maze.c.o.d
+build CMakeFiles/LabyrinthSolver.dir/src/maze.c.o: C_COMPILER__LabyrinthSolver_unscanned_Debug /Users/maximedervaux/dev/perso/LabyrinthSolver/src/maze.c || cmake_object_order_depends_target_LabyrinthSolver
+  DEP_FILE = CMakeFiles/LabyrinthSolver.dir/src/maze.c.o.d
   FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/LabyrinthSolver.dir
-  OBJECT_FILE_DIR = CMakeFiles/LabyrinthSolver.dir
+  OBJECT_FILE_DIR = CMakeFiles/LabyrinthSolver.dir/src
 
-build CMakeFiles/LabyrinthSolver.dir/resolver.c.o: C_COMPILER__LabyrinthSolver_unscanned_Debug /Users/maximedervaux/dev/perso/LabyrinthSolver/resolver.c || cmake_object_order_depends_target_LabyrinthSolver
-  DEP_FILE = CMakeFiles/LabyrinthSolver.dir/resolver.c.o.d
+build CMakeFiles/LabyrinthSolver.dir/src/resolver.c.o: C_COMPILER__LabyrinthSolver_unscanned_Debug /Users/maximedervaux/dev/perso/LabyrinthSolver/src/resolver.c || cmake_object_order_depends_target_LabyrinthSolver
+  DEP_FILE = CMakeFiles/LabyrinthSolver.dir/src/resolver.c.o.d
   FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/LabyrinthSolver.dir
-  OBJECT_FILE_DIR = CMakeFiles/LabyrinthSolver.dir
+  OBJECT_FILE_DIR = CMakeFiles/LabyrinthSolver.dir/src
 
 
 # =============================================================================
@@ -75,7 +75,7 @@ build CMakeFiles/LabyrinthSolver.dir/resolver.c.o: C_COMPILER__LabyrinthSolver_u
 #############################################
 # Link the executable LabyrinthSolver
 
-build LabyrinthSolver: C_EXECUTABLE_LINKER__LabyrinthSolver_Debug CMakeFiles/LabyrinthSolver.dir/main.c.o CMakeFiles/LabyrinthSolver.dir/maze.c.o CMakeFiles/LabyrinthSolver.dir/resolver.c.o
+build LabyrinthSolver: C_EXECUTABLE_LINKER__LabyrinthSolver_Debug CMakeFiles/LabyrinthSolver.dir/src/main.c.o CMakeFiles/LabyrinthSolver.dir/src/maze.c.o CMakeFiles/LabyrinthSolver.dir/src/resolver.c.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk
   OBJECT_DIR = CMakeFiles/LabyrinthSolver.dir
   POST_BUILD = :

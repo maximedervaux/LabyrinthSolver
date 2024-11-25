@@ -3,9 +3,9 @@ project(LabyrinthSolver C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(LabyrinthSolver main.c
+add_executable(LabyrinthSolver src/main.c
         include/maze.h
-        maze.c
-        resolver.c
+        src/maze.c
+        src/resolver.c
         include/resolver.h
 )

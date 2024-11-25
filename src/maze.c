@@ -2,7 +2,7 @@
 // Created by Maxime Dervaux on 11/11/2024.
 //
 
-#include "include/maze.h"
+#include "../include/maze.h"
 #include <unistd.h>
 
 #include <stdio.h>
