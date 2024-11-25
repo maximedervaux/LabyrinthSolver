@@ -8,8 +8,8 @@
 
 
 int main(void) {
-    int width = 5 ;
-    int height = 5;
+    int width = 10 ;
+    int height = 10;
     srand(time(NULL));
 
     Maze *monlabirynth = createMaze(width, height);

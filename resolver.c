@@ -50,10 +50,11 @@ int backTrackingResolver(Maze* maze) {
     mastack[stacktop++] = startCellule;
     startCellule->visite = 2;
 
+    int etape = 0 ;
     while (stacktop > 0) {
         printMaze(maze);
-        printf("\nÉtape %d...\n", stacktop);
-        usleep(1000000);
+        printf("\nÉtape %d...\n", etape++);
+        usleep(500000);
 
         Cellule* cellule = mastack[stacktop - 1];
 
