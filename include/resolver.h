@@ -9,5 +9,7 @@
 #include "maze.h"
 
 int resolve(Maze* maze);
+void startBacktracking(Maze* maze);
+int stepBacktracking(Maze* maze);
 
 #endif //RESOLVER_H

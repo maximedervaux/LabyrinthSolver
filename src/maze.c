@@ -8,12 +8,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../include/config.h"
 
 
 Maze* createMaze(int width, int height) {
     Maze* maze = malloc(sizeof(Maze));
     maze->width = width;
     maze->height = height;
+
 
     maze->grid = malloc(height * sizeof(Cellule*));
     for (int i = 0; i < height; i++) {
@@ -31,16 +33,19 @@ Maze* createMaze(int width, int height) {
         }
     }
 
-    //TODO Ajouter un peu d'aleatoire
     maze->start.x = 0;
     maze->start.y = 0;
 
+    maze->end.x = MAZE_WIDTH-1;
+    maze->end.y = MAZE_HEIGHT-1;
 
     maze->grid[maze->start.y][maze->start.x].visite = 1;
     return maze;
 
 }
 
+
+//Print mode Console
 void printMaze(Maze* maze) {
     for (int j = 0; j < maze->width; j++) {
         printf("+---");
@@ -79,6 +84,7 @@ void freeMaze(Maze *maze) {
     free(maze);
 }
 
+
 Direction randDirectionResolver(Cellule* cellule, Maze* maze) {
     int directions[4] = {UP, RIGHT, DOWN, LEFT};
     int validDirections[4];
@@ -98,6 +104,15 @@ Direction randDirectionResolver(Cellule* cellule, Maze* maze) {
     }
     return -1;
 }
+
+void resetVisite(Maze* maze) {
+    for (int i = 0; i < maze->height; i++) {
+        for (int j = 0; j < maze->width; j++) {
+            maze->grid[i][j].visite = 0;
+        }
+    }
+}
+
 
 int backTrackingGenerator(Maze* maze, Cellule* startCellule) {
     Cellule** mastack = malloc(sizeof(Cellule*) * maze->width * maze->height);
@@ -134,13 +149,10 @@ int backTrackingGenerator(Maze* maze, Cellule* startCellule) {
 
             if (nextCellule) {
 
-                maze->end = nextCellule->coordonate;
                 nextCellule->visite = 1;
                 mastack[stacktop++] = nextCellule;
 
 
-                //printMaze(maze);
-                // usleep(500000);
             }
         } else {
             stacktop--;
@@ -148,13 +160,7 @@ int backTrackingGenerator(Maze* maze, Cellule* startCellule) {
     }
 
     free(mastack);
+    resetVisite(maze);
     return 0;
 }
 
-void resetVisite(Maze* maze) {
-    for (int i = 0; i < maze->height; i++) {
-        for (int j = 0; j < maze->width; j++) {
-            maze->grid[i][j].visite = 0;
-        }
-    }
-}

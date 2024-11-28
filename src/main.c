@@ -1,33 +1,53 @@
-#include <stdio.h>
-#include <time.h>
-#include <unistd.h>
-
+#include "raylib.h"
 #include "../include/maze.h"
 #include "../include/resolver.h"
-#include "stdlib.h"
+#include "../include/raylib.h"
 
+#include "../include/config.h"
 
 int main(void) {
-    int width = 10 ;
-    int height = 10;
-    srand(time(NULL));
+    // Initialisation Raylib
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Maze Solver");
+    SetTargetFPS(60);
 
-    Maze *monlabirynth = createMaze(width, height);
-    backTrackingGenerator(monlabirynth, &monlabirynth->grid[monlabirynth->start.y][monlabirynth->start.x]);
-    resetVisite(monlabirynth);
+    // Création du labyrinthe
+    Maze* monlabyrinthe = createMaze(MAZE_WIDTH, MAZE_HEIGHT);
+    backTrackingGenerator(monlabyrinthe, &monlabyrinthe->grid[monlabyrinthe->start.y][monlabyrinthe->start.x]);
+    startBacktracking(monlabyrinthe);
 
+    int resolutionDone = 0;
 
-    printf("----------------------------\n");
-    printf("Labyrinthe généré :\n");
-    printf("----------------------------\n");
+    while (!WindowShouldClose()) {
 
-    printMaze(monlabirynth);
+        if (IsKeyPressed(KEY_R)) {
+            freeMaze(monlabyrinthe);
+            monlabyrinthe = createMaze(MAZE_WIDTH, MAZE_HEIGHT);
+            backTrackingGenerator(monlabyrinthe, &monlabyrinthe->grid[monlabyrinthe->start.y][monlabyrinthe->start.x]);
+            startBacktracking(monlabyrinthe);
+            resolutionDone = 0;
+        }
 
+        if (!resolutionDone) {
+            resolutionDone = stepBacktracking(monlabyrinthe);
+        }
 
-    usleep(1000000);
+        BeginDrawing();
+        ClearBackground(BACKGROUND_COLOR);
 
-    resolve(monlabirynth);
-    freeMaze(monlabirynth);
+        drawMaze(monlabyrinthe);
+
+        DrawText("[ESC] EXIT  [R] REGENERATE", 10, 10, 20, GREEN);
+        if (resolutionDone) {
+            DrawText("Labyrinthe résolu !", (SCREEN_WIDTH/5), SCREEN_HEIGHT/3, 50, GREEN);
+        } else {
+            DrawText("Résolution en cours...", 10, 50, 20, DARKGRAY);
+        }
+
+        EndDrawing();
+    }
+
+    freeMaze(monlabyrinthe);
+    CloseWindow();
 
     return 0;
 }
