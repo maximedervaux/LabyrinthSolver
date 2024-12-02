@@ -38,7 +38,7 @@ int main(void) {
 
         DrawText("[ESC] EXIT  [R] REGENERATE", 10, 10, 20, GREEN);
         if (resolutionDone) {
-            DrawText("Labyrinthe résolu !", (SCREEN_WIDTH/5), SCREEN_HEIGHT/3, 50, GREEN);
+            DrawText("Labyrinthe résolu !", (SCREEN_WIDTH/4.5), SCREEN_HEIGHT/3, 50, GREEN);
         } else {
             DrawText("Résolution en cours...", 10, 50, 20, DARKGRAY);
         }
